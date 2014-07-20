@@ -1,6 +1,7 @@
 {
 	"analize_lines": 500,
-	"my_name": "<Enter Your Name>",
+	"my_name": "Your Company http://yourcompany.com",
+	"new_header": "/**\n* @version   #FName:'file.php', #Date:2014-07-20 #1\n* @author    Your Company http://yourcompany.com\n* @copyright Copyright (C) 2005 - 2014 Your Company, LLC\n* @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only\n*/\n",
 	"file_exclude_patterns": [
 	],
 	"file_include_patterns": [
@@ -17,6 +18,7 @@
 		"*.py",
 		"*.rb",
 		"*.java",
+		"*.php",
 		"*.m"
 	],
 	"copyright": {
@@ -29,14 +31,18 @@
 		"enable": true,
 		"patterns": [
 			"(?i)@?updater\\s*[:= ]",
-			"(?i)@?modified by\\s*[:= ] ?"
+			"(?i)@?modified by\\s*[:= ] ?",
+			"(?i)@?author\\s*[:= ] ?"
+
+
 		]
 	},
 	"modified_date": {
 		"enable": true,
-		"format": "%Y-%m-%d",
+		"format": "%d-%m-%Y %H:%M:%S",
 		"patterns": [
-			"(?i)@?last modified\\s*[:= ] ?"
+			"(?i)@?last modified\\s*[:= ] ?",
+			"(?i)@?version\\s*[:= ] ?"
 		]
 	}
 }
