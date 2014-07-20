@@ -1,4 +1,14 @@
 [
+		{
+	 "caption": "Edith",
+	 "mnemonic": "T",
+	 "id": "edit",
+	 "children":
+		[
+			{ "caption": "-", "id": "packagecommands" },
+			{ "command": "addheader", "caption": "Add Header", "mnemonic": "T"}
+		]
+	},
 	{
 		"caption": "Preferences",
 		"mnemonic": "n",
