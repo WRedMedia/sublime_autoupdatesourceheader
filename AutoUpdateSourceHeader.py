@@ -7,8 +7,8 @@ import fnmatch
 from datetime import *
 
 class AutoUpdateSourceHeaderCommand(sublime_plugin.TextCommand):
-	__year_pattern1 = "^([0-9]{4}\\s*-\\s*)([0-9]{4})";
-	__year_pattern2 = "^([0-9]{4})";
+	__year_pattern1 = "([0-9]{4}\s*-\s*)([0-9]{4})";
+	__year_pattern2 = "([0-9]{4})";
 
 	def update_copyright(self, edit, copyright, region, today):
 		if copyright["enable"] == False:
@@ -27,6 +27,7 @@ class AutoUpdateSourceHeaderCommand(sublime_plugin.TextCommand):
 			m = re.search(self.__year_pattern1, sub);
 			if m:
 				# matched XXXX-YYYY
+				#print("COPYRIGHT MATCHED" + m.group(0)); #Test
 				if m.group(2) != str(today.year):
 					# update 'Year'. XXXX-<Year>
 					span = m.span(2);
