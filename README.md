@@ -6,6 +6,7 @@ Auto update source header.
 * modified user name
 * modified date
 * copyright year
+* Add new header
 
 ex)
 your name : Harurow / date : 2013-10-20
