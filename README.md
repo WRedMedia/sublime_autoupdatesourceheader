@@ -22,11 +22,12 @@ your name : Harurow / date : 2013-10-20
 
 * after
 ```c
-/**********
-* modified by     : Harurow
-* last modified   : 2013-10-20
-* Copyright (c) 2011-2013 XXXXXX.
-***********/
+/**
+* @version   #FName:'file.php', #Date:2014-07-20 #1
+* @author    Your Company http://yourcompany.com
+* @copyright Copyright (C) 2005 - 2014 Your Company, LLC
+* @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+*/
 ```
 
 ## How to Install ##
@@ -50,6 +51,9 @@ You must set your name.
 	"my_name": **INPUT YOUR NAME**
 }
 
+## Usage ##
+
+edit->Add Header
 ## License
 The MIT License (MIT)
 
