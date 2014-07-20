@@ -80,17 +80,25 @@ class AutoUpdateSourceHeaderCommand(sublime_plugin.TextCommand):
 			return False;
 
 		line = self.view.substr(region);
+		view = sublime.Window.active_view(sublime.active_window())
 
 		for p in update_date["patterns"]:
 			m = re.search(p, line);
 			if not m:
 				continue;
 			# 'Date' matched
-			date_str = today.strftime(update_date["format"]);
-
 			offset = region.a + m.end(0);
 			sub = m.string[m.end(0):];
 			rgn = sublime.Region(offset, offset + len(sub));
+			mcount = re.search('(?i)(?:#)([0-9]+)', self.view.substr(rgn))
+			if not mcount:
+				mcount = 0
+			else:
+				mcount = mcount.group(1);
+			mcount = int(mcount) + 1
+
+			date_str = "#FName:" + os.path.basename(view.file_name()) + " | #Date:" + today.strftime(update_date["format"]) + " | #" + str(mcount);
+
 			print ("AutoUpdateSourceHeader - modified_date:"
 				+ self.view.substr(rgn) + " > " + date_str);
 			self.view.replace(edit, rgn, date_str);
@@ -167,3 +175,12 @@ class UpdateSourceHeader(sublime_plugin.EventListener):
 		if view.is_dirty():
 			view.run_command("auto_update_source_header");
 
+
+class addheader(sublime_plugin.TextCommand):
+	def run(self, edit):
+		print("Add Header information");
+		settings = sublime.load_settings("AutoUpdateSourceHeader.sublime-settings");
+		new_header = settings.get("new_header");
+		sublime.active_window().run_command("show_overlay", {"overlay": "goto", "text": ":2"});
+		sublime.active_window().run_command("show_overlay", {"overlay": "goto", "show_files": True})
+		self.view.insert(edit, self.view.sel()[0].begin(), new_header);
